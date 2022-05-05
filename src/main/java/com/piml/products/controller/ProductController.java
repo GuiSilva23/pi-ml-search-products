@@ -51,4 +51,12 @@ public class ProductController {
         List<Product> productList = productService.getByCategory(category);
         return ResponseEntity.ok(ProductDTO.map(productList));
     }
+
+    @ApiOperation(value = "Search Products")
+    @GetMapping("/api/v1/fresh-products/search")
+    public ResponseEntity<List<ProductDTO>> findByName(@RequestParam(name = "name") String name) {
+        List<Product> productList = productService.findByName(name);
+        return ResponseEntity.ok(ProductDTO.map(productList));
+    }
+
 }

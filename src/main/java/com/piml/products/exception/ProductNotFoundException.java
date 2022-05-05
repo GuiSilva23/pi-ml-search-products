@@ -1,8 +1,6 @@
 package com.piml.products.exception;
 
-import javax.persistence.EntityNotFoundException;
-
-public class ProductNotFoundException extends EntityNotFoundException{
+public class ProductNotFoundException extends RuntimeException{
 
     public ProductNotFoundException(String message) {
         super(message);
