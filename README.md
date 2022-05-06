@@ -1,4 +1,4 @@
-# Products API
+# Search Products API
 
 Products API is a REST API service to manage all marketplace needs in the project scope. It was developed during IT Bootcamp - Wave 5 as a part of the last group project.
 
