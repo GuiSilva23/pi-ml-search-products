@@ -1,6 +1,7 @@
 package com.piml.products.service;
 
 import com.piml.products.entity.Product;
+import com.piml.products.exception.ProductNotFoundException;
 import com.piml.products.interfaces.CategoryENUM;
 import com.piml.products.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
@@ -128,4 +129,45 @@ public class ProductServiceTests {
             Mockito.verify(productRepositoryMock, Mockito.times(1)).findByCategory(categoryFilter.getCategoryDescription());
         });
     }
+
+    @Test
+    @DisplayName("Should return a empty list of products when search by name")
+    public void shouldReturnEmptyWhenSearchProducts(){
+
+        Product product = Product.builder()
+                .name("Test Product")
+                .build();
+
+        Mockito.when(productRepositoryMock.findByNameIgnoreCaseContains(product.getName()))
+                .thenReturn(new ArrayList<>());
+
+        ProductNotFoundException productNotFoundException = Assertions.assertThrows(
+                ProductNotFoundException.class, () -> productService.findByName(product.getName())
+        );
+
+        Assertions.assertEquals("Product not found!", productNotFoundException.getMessage());
+    }
+
+    @Test
+    @DisplayName("Should return a list of products when search by name")
+    public void shouldReturnAListOfSearchProducts(){
+        List<Product> productList = new ArrayList<>();
+        productList.add(Product.builder()
+                .name("Test Product 1")
+                .build());
+
+        Product product = Product.builder()
+                .name("Test Product")
+                .build();
+
+        Mockito.when(productRepositoryMock.findByNameIgnoreCaseContains(product.getName())).thenReturn(productList);
+
+        Assertions.assertDoesNotThrow(() -> {
+            List<Product> result = productService.findByName(product.getName());
+            Assertions.assertEquals(productList, result);
+        });
+
+    }
+
+
 }
