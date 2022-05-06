@@ -45,5 +45,5 @@ docker-compose build --no-cache && docker-compose up -d && docker rmi -f $(docke
 
 ```
 
-## Authors
+## Author
 - [Guilherme Pereira](https://github.com/GuiSilva23)
