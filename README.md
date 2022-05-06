@@ -4,6 +4,10 @@ Products API is a REST API service to manage all marketplace needs in the projec
 
 This repository was created from the parent repository, to receive new functionality.
 
+# Documentation
+
+The user story about this endpoint its inside the folder ./docs/requirements
+
 ## Endpoints
 
 See also the OpenAPI Specification (/swagger-ui.html while running).
