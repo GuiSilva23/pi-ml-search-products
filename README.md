@@ -29,7 +29,7 @@ Use the given Maven Wrapper and Docker to build a new service container
 
 ```bash
 ## 1. Clone project to local 
-git clone https://github.com/Grupo9-ITBootcampMeli/pi-ml-products
+git clone https://github.com/GuiSilva23/pi-ml-search-products
 
 ## 2. Use Maven Wrapper to generate a new build  
 ./mvnw clean package
